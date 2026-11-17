@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-label="Conexion del sensor de ventana (reed switch) en GPIO13">
+  <rect x="0" y="0" width="1000" height="700" fill="#fbfbfd"/>
+  <rect x="20" y="20" width="960" height="660" rx="18" fill="none" stroke="#dfe5ec" stroke-width="1.2"/>
+
+  <text x="48" y="56" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#12233b">Vivero IoT — Sensor de ventana (reed switch)</text>
+  <text x="48" y="80" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#5b6b7c">Un solo sensor de cerrada · GPIO13 · coincide con docs/01_hardware_pinout.md §4.4 y config.h</text>
+
+  <!-- ============================ panel electrico ============================ -->
+  <rect x="40" y="110" width="580" height="570" rx="12" fill="#ffffff" stroke="#dfe5ec" stroke-width="1.4"/>
+  <text x="60" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1c2b3a">Conexion electrica</text>
+
+  <!-- rail 3.3 V -->
+  <path d="M200,190 L460,190" fill="none" stroke="#ef6c00" stroke-width="4" stroke-linecap="round"/>
+  <text x="200" y="178" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#ef6c00">+3.3 V</text>
+
+  <!-- vertical al pull-up -->
+  <path d="M330,190 L330,225" fill="none" stroke="#ef6c00" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- resistor 10k -->
+  <rect x="312" y="225" width="36" height="85" rx="3" fill="#fff8e1" stroke="#1c2b3a" stroke-width="2"/>
+  <text x="368" y="262" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1c2b3a">10 kΩ</text>
+  <text x="368" y="282" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6b7c">pull-up externo</text>
+
+  <!-- vertical del resistor al nodo -->
+  <path d="M330,310 L330,375" fill="none" stroke="#546e7a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="330" cy="375" r="5.5" fill="#546e7a"/>
+
+  <!-- rama al GPIO13 -->
+  <path d="M330,375 L470,375" fill="none" stroke="#1565c0" stroke-width="3" stroke-linecap="round"/>
+  <rect x="470" y="340" width="120" height="70" rx="9" fill="#eef4ff" stroke="#0d47a1" stroke-width="2"/>
+  <text x="486" y="367" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0d47a1">ESP32</text>
+  <text x="486" y="391" font-family="Consolas, Menlo, monospace" font-size="14" font-weight="700" fill="#0d47a1">GPIO13</text>
+  <text x="470" y="432" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5b6b7c">pinMode(INPUT_PULLUP)</text>
+  <text x="470" y="450" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5b6b7c">interno ~45 kΩ: redundante</text>
+  <text x="470" y="468" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5b6b7c">con el 10 kΩ externo</text>
+
+  <!-- vertical al reed -->
+  <path d="M330,375 L330,440" fill="none" stroke="#546e7a" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- reed switch -->
+  <circle cx="330" cy="445" r="4.5" fill="#1c2b3a"/>
+  <path d="M330,445 L378,487" fill="none" stroke="#1c2b3a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="330" cy="505" r="4.5" fill="#1c2b3a"/>
+  <text x="312" y="455" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1c2b3a" text-anchor="end">Reed switch</text>
+  <text x="312" y="475" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6b7c" text-anchor="end">contacto normalmente abierto</text>
+  <text x="312" y="493" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6b7c" text-anchor="end">un solo cable + GND comun</text>
+
+  <!-- vertical al GND -->
+  <path d="M330,505 L330,570" fill="none" stroke="#212121" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- rail GND -->
+  <path d="M200,570 L560,570" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round"/>
+  <text x="200" y="558" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#212121">GND</text>
+  <circle cx="330" cy="570" r="5.5" fill="#212121"/>
+
+  <!-- GND al ESP32 -->
+  <path d="M560,570 L560,410" fill="none" stroke="#212121" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="560" cy="570" r="5.5" fill="#212121"/>
+  <circle cx="560" cy="410" r="5.5" fill="#212121"/>
+
+  <!-- leyenda de niveles -->
+  <rect x="60" y="596" width="540" height="66" rx="8" fill="#f4f6f7" stroke="#dfe5ec" stroke-width="1.2"/>
+  <text x="76" y="620" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#1c2b3a">Niveles (config.h → WINDOW_CLOSED_LEVEL = LOW)</text>
+  <text x="76" y="640" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">Cerrada  →  GPIO13 en BAJO   (contacto cerrado a GND, el imán está presente)</text>
+  <text x="76" y="657" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">Abierta  →  GPIO13 en ALTO  (pull-up a 3.3 V; debounce de 50 ms en firmware)</text>
+
+  <!-- ============================ panel notas ============================ -->
+  <rect x="650" y="110" width="310" height="330" rx="12" fill="#ffffff" stroke="#dfe5ec" stroke-width="1.4"/>
+  <text x="670" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1c2b3a">Notas de conexion</text>
+  <text x="670" y="170" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">·  El sensor es pasivo: no consume</text>
+  <text x="670" y="190" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   corriente y no necesita VCC.</text>
+  <text x="670" y="216" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">·  GPIO13 no es strapping ni es</text>
+  <text x="670" y="236" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   solo-entrada: admite INPUT_PULLUP.</text>
+  <text x="670" y="262" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">·  Cable de 0.22-0.5 mm², alejado</text>
+  <text x="670" y="282" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   del cable del motor.</text>
+  <text x="670" y="308" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">·  Si se usa un reed normalmente</text>
+  <text x="670" y="328" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   cerrado, la logica se invierte y</text>
+  <text x="670" y="348" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   hay que cambiar WINDOW_CLOSED_LEVEL.</text>
+  <text x="670" y="374" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">·  Un solo sensor: solo confirma</text>
+  <text x="670" y="394" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">   "cerrada". El 2.º sensor es v2.</text>
+  <text x="670" y="420" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b71c1c">·  Probar con el motor corriendo.</text>
+
+  <!-- ============================ panel montaje ============================ -->
+  <rect x="650" y="460" width="310" height="220" rx="12" fill="#ffffff" stroke="#dfe5ec" stroke-width="1.4"/>
+  <text x="670" y="490" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1c2b3a">Montaje</text>
+
+  <!-- marco fijo -->
+  <rect x="680" y="515" width="70" height="95" rx="4" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <text x="715" y="508" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#546e7a" text-anchor="middle">marco fijo</text>
+
+  <!-- hoja movil -->
+  <rect x="830" y="515" width="95" height="95" rx="4" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="877" y="508" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#1565c0" text-anchor="middle">hoja móvil</text>
+
+  <!-- reed sobre el marco -->
+  <rect x="750" y="550" width="14" height="34" rx="3" fill="#2e7d32" stroke="#1b5e20" stroke-width="1.5"/>
+  <!-- iman sobre la hoja -->
+  <rect x="816" y="550" width="14" height="34" rx="3" fill="#c62828" stroke="#b71c1c" stroke-width="1.5"/>
+
+  <!-- hueco -->
+  <path d="M768,567 L812,567" fill="none" stroke="#5b6b7c" stroke-width="1.6"/>
+  <path d="M774,562 L768,567 L774,572" fill="none" stroke="#5b6b7c" stroke-width="1.6"/>
+  <path d="M806,562 L812,567 L806,572" fill="none" stroke="#5b6b7c" stroke-width="1.6"/>
+
+  <text x="742" y="630" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#1b5e20" text-anchor="end">reed</text>
+  <text x="838" y="630" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#b71c1c">imán</text>
+  <text x="790" y="654" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6b7c" text-anchor="middle">aire 5-15 mm</text>
+  <text x="670" y="672" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5b6b7c">reed en el marco (el cable no se mueve) · imán en la hoja</text>
+</svg>

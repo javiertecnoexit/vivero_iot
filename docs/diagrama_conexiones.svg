@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1620" viewBox="0 0 1720 1620" role="img" aria-label="Diagrama de conexiones del vivero IoT">
+<rect x="0" y="0" width="1720" height="1620" fill="#fbfbfd"/>
+<rect x="20" y="20" width="1680" height="1580" rx="18" fill="none" fill-opacity="1.0" stroke="#dfe5ec" stroke-width="1.2"/>
+<text x="48" y="58" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#12233b" text-anchor="start" letter-spacing="0">Vivero IoT — Diagrama de conexiones</text>
+<text x="48" y="84" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">ESP32 DevKit V1 · v0.1 · 8 relés fijos · coincide con docs/04_conexionado_y_componentes.md</text>
+<path d="M300,160 L330,160 L330,200 L1260,200" fill="none" stroke="#d32f2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="336" y="190" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#d32f2f" text-anchor="start" letter-spacing="0">+5 V</text>
+<path d="M250,330 L250,1372" fill="none" stroke="#ef6c00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="256" y="322" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#ef6c00" text-anchor="start" letter-spacing="0">+3.3 V</text>
+<path d="M190,484 L190,1560" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="196" y="476" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#212121" text-anchor="start" letter-spacing="0">GND</text>
+<path d="M120,1560 L1660,1560" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="126" y="1550" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#212121" text-anchor="start" letter-spacing="0">GND</text>
+<rect x="40" y="100" width="260" height="150" rx="12" fill="#fff5f5" fill-opacity="1.0" stroke="#b71c1c" stroke-width="1.6"/>
+<text x="56" y="128" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#b71c1c" text-anchor="start" letter-spacing="0">220 VAC</text>
+<text x="56" y="148" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">L · N · PE</text>
+<text x="56" y="176" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">Breaker 2P 10 A</text>
+<text x="56" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">RCD 30 mA · Fusible 2 A</text>
+<text x="56" y="228" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#b71c1c" text-anchor="start" letter-spacing="0">Fuente 5 V / 2 A</text>
+<path d="M150,250 L150,1560" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M300,160 L330,160" fill="none" stroke="#d32f2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="700" y="380" width="320" height="1120" rx="14" fill="#eef4ff" fill-opacity="1.0" stroke="#0d47a1" stroke-width="2"/>
+<text x="716" y="412" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">ESP32 DevKit V1</text>
+<text x="716" y="432" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">30 pines · lógica 3.3 V</text>
+<path d="M730,380 L730,330 L250,330" fill="none" stroke="#ef6c00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M800,380 L800,200" fill="none" stroke="#d32f2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="800" cy="200" r="4.5" fill="#d32f2f"/>
+<path d="M960,1500 L960,1560" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="960" cy="1560" r="4.5" fill="#212121"/>
+<circle cx="700" cy="472" r="4" fill="#0d47a1"/>
+<text x="714" y="476" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO21/22</text>
+<text x="810" y="476" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">OLED + RTC · SDA21/SCL22</text>
+<circle cx="700" cy="652" r="4" fill="#0d47a1"/>
+<text x="714" y="656" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO4</text>
+<text x="810" y="656" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">DHT21</text>
+<circle cx="700" cy="742" r="4" fill="#0d47a1"/>
+<text x="714" y="746" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO12</text>
+<text x="810" y="746" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">XY-MOS TRIG</text>
+<circle cx="700" cy="832" r="4" fill="#0d47a1"/>
+<text x="714" y="836" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO34</text>
+<text x="810" y="836" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Humedad Z1</text>
+<circle cx="700" cy="922" r="4" fill="#0d47a1"/>
+<text x="714" y="926" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO35</text>
+<text x="810" y="926" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Humedad Z2</text>
+<circle cx="700" cy="1012" r="4" fill="#0d47a1"/>
+<text x="714" y="1016" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO16</text>
+<text x="810" y="1016" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">DS18B20 Z1</text>
+<circle cx="700" cy="1102" r="4" fill="#0d47a1"/>
+<text x="714" y="1106" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO32</text>
+<text x="810" y="1106" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">DS18B20 Z2</text>
+<circle cx="700" cy="1192" r="4" fill="#0d47a1"/>
+<text x="714" y="1196" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO33</text>
+<text x="810" y="1196" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">DS18B20 cama</text>
+<circle cx="700" cy="1282" r="4" fill="#0d47a1"/>
+<text x="714" y="1286" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO13</text>
+<text x="810" y="1286" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Ventana</text>
+<circle cx="700" cy="1390" r="4" fill="#0d47a1"/>
+<text x="714" y="1394" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO25</text>
+<text x="810" y="1394" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Selector</text>
+<circle cx="700" cy="1420" r="4" fill="#0d47a1"/>
+<text x="714" y="1424" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO36</text>
+<text x="810" y="1424" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Confirmar</text>
+<circle cx="700" cy="1450" r="4" fill="#0d47a1"/>
+<text x="714" y="1454" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="start" letter-spacing="0">GPIO39</text>
+<text x="810" y="1454" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Configuración</text>
+<circle cx="1020" cy="520" r="4" fill="#0d47a1"/>
+<text x="1006" y="524" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO26</text>
+<circle cx="1020" cy="600" r="4" fill="#0d47a1"/>
+<text x="1006" y="604" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO27</text>
+<circle cx="1020" cy="680" r="4" fill="#0d47a1"/>
+<text x="1006" y="684" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO18</text>
+<circle cx="1020" cy="760" r="4" fill="#0d47a1"/>
+<text x="1006" y="764" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO14</text>
+<circle cx="1020" cy="840" r="4" fill="#0d47a1"/>
+<text x="1006" y="844" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO19</text>
+<circle cx="1020" cy="920" r="4" fill="#0d47a1"/>
+<text x="1006" y="924" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO17</text>
+<circle cx="1020" cy="1000" r="4" fill="#0d47a1"/>
+<text x="1006" y="1004" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO23</text>
+<circle cx="1020" cy="1080" r="4" fill="#0d47a1"/>
+<text x="1006" y="1084" font-family="Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="end" letter-spacing="0">GPIO5</text>
+<rect x="300" y="440" width="260" height="64" rx="9" fill="#f4f6f7" fill-opacity="1.0" stroke="#37474f" stroke-width="1.4"/>
+<text x="314" y="467" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#37474f" text-anchor="start" letter-spacing="0">OLED SSD1306</text>
+<text x="314" y="485" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">128×64 · I2C 0x3C</text>
+<path d="M300,484 L190,484" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="484" r="4.5" fill="#212121"/>
+<path d="M560,472 L700,472" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="472" r="3.6" fill="#546e7a"/>
+<rect x="300" y="530" width="260" height="64" rx="9" fill="#f4f6f7" fill-opacity="1.0" stroke="#37474f" stroke-width="1.4"/>
+<text x="314" y="557" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#37474f" text-anchor="start" letter-spacing="0">RTC DS3231</text>
+<text x="314" y="575" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">I2C 0x57 · CR2032</text>
+<path d="M300,574 L190,574" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="574" r="4.5" fill="#212121"/>
+<path d="M560,562 L700,562" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="562" r="3.6" fill="#546e7a"/>
+<rect x="300" y="620" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="647" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">DHT21 / AM2301</text>
+<text x="314" y="665" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Aire · DATA</text>
+<path d="M300,664 L190,664" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="664" r="4.5" fill="#212121"/>
+<text x="296" y="636" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5b6b7c" text-anchor="end" letter-spacing="0">10k</text>
+<path d="M560,652 L700,652" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="652" r="3.6" fill="#546e7a"/>
+<rect x="300" y="710" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="737" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">XY-MOS</text>
+<text x="314" y="755" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">VCC conmutado sensores</text>
+<path d="M300,754 L190,754" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="754" r="4.5" fill="#212121"/>
+<path d="M560,742 L700,742" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="742" r="3.6" fill="#546e7a"/>
+<rect x="300" y="800" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="827" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">Humedad sustrato Z1</text>
+<text x="314" y="845" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">AOUT analógico</text>
+<path d="M300,844 L190,844" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="844" r="4.5" fill="#212121"/>
+<path d="M560,832 L700,832" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="832" r="3.6" fill="#546e7a"/>
+<rect x="300" y="890" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="917" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">Humedad sustrato Z2</text>
+<text x="314" y="935" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">AOUT analógico</text>
+<path d="M300,934 L190,934" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="934" r="4.5" fill="#212121"/>
+<path d="M560,922 L700,922" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="922" r="3.6" fill="#546e7a"/>
+<rect x="300" y="980" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="1007" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">DS18B20 · Z1</text>
+<text x="314" y="1025" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Temperatura sustrato</text>
+<path d="M300,1024 L190,1024" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="1024" r="4.5" fill="#212121"/>
+<text x="296" y="996" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5b6b7c" text-anchor="end" letter-spacing="0">4.7k</text>
+<path d="M560,1012 L700,1012" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1012" r="3.6" fill="#546e7a"/>
+<rect x="300" y="1070" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="1097" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">DS18B20 · Z2</text>
+<text x="314" y="1115" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Temperatura sustrato</text>
+<path d="M300,1114 L190,1114" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="1114" r="4.5" fill="#212121"/>
+<text x="296" y="1086" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5b6b7c" text-anchor="end" letter-spacing="0">4.7k</text>
+<path d="M560,1102 L700,1102" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1102" r="3.6" fill="#546e7a"/>
+<rect x="300" y="1160" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="1187" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">DS18B20 · cama</text>
+<text x="314" y="1205" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Temperatura cama</text>
+<path d="M300,1204 L190,1204" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="1204" r="4.5" fill="#212121"/>
+<text x="296" y="1176" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5b6b7c" text-anchor="end" letter-spacing="0">4.7k</text>
+<path d="M560,1192 L700,1192" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1192" r="3.6" fill="#546e7a"/>
+<rect x="300" y="1250" width="260" height="64" rx="9" fill="#f1f8f2" fill-opacity="1.0" stroke="#1b5e20" stroke-width="1.4"/>
+<text x="314" y="1277" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="start" letter-spacing="0">Sensor de ventana</text>
+<text x="314" y="1295" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Reed · cerrada = LOW</text>
+<path d="M300,1294 L190,1294" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="1294" r="4.5" fill="#212121"/>
+<text x="296" y="1266" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5b6b7c" text-anchor="end" letter-spacing="0">10k</text>
+<path d="M560,1282 L700,1282" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1282" r="3.6" fill="#546e7a"/>
+<path d="M300,460 L250,460" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="460" r="4.5" fill="#ef6c00"/>
+<path d="M300,550 L250,550" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="550" r="4.5" fill="#ef6c00"/>
+<path d="M300,640 L250,640" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="640" r="4.5" fill="#ef6c00"/>
+<path d="M300,730 L250,730" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="730" r="4.5" fill="#ef6c00"/>
+<path d="M300,1000 L250,1000" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="1000" r="4.5" fill="#ef6c00"/>
+<path d="M300,1090 L250,1090" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="1090" r="4.5" fill="#ef6c00"/>
+<path d="M300,1180 L250,1180" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="1180" r="4.5" fill="#ef6c00"/>
+<path d="M300,1270 L250,1270" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="1270" r="4.5" fill="#ef6c00"/>
+<path d="M560,562 L660,562 L660,472" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="660" cy="472" r="3.6" fill="#546e7a"/>
+<path d="M350,774 L350,786 L282,786 L282,910" fill="none" stroke="#00897b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="282" cy="820" r="4.5" fill="#00897b"/>
+<circle cx="282" cy="910" r="4.5" fill="#00897b"/>
+<path d="M300,820 L282,820" fill="none" stroke="#00897b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M300,910 L282,910" fill="none" stroke="#00897b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="300" y="1340" width="260" height="140" rx="9" fill="#f4f6f7" fill-opacity="1.0" stroke="#37474f" stroke-width="1.4"/>
+<text x="314" y="1364" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#37474f" text-anchor="start" letter-spacing="0">Botones (a GND)</text>
+<text x="548" y="1384" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">Selector  ·  10k int.</text>
+<path d="M560,1390 L700,1390" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1390" r="3.6" fill="#546e7a"/>
+<text x="548" y="1414" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">Confirmar  ·  10k ext.</text>
+<path d="M560,1420 L700,1420" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1420" r="3.6" fill="#546e7a"/>
+<text x="548" y="1444" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">Configuración  ·  10k ext.</text>
+<path d="M560,1450 L700,1450" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="700" cy="1450" r="3.6" fill="#546e7a"/>
+<path d="M300,1372 L250,1372" fill="none" stroke="#ef6c00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250" cy="1372" r="4.5" fill="#ef6c00"/>
+<path d="M300,1462 L190,1462" fill="none" stroke="#212121" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="1462" r="4.5" fill="#212121"/>
+<rect x="1120" y="460" width="280" height="660" rx="12" fill="#f6f0ff" fill-opacity="1.0" stroke="#4a148c" stroke-width="2"/>
+<text x="1134" y="486" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">Módulo de relés 8 canales</text>
+<text x="1134" y="502" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">low-level · JD-VCC 5 V · 10 kΩ en cada IN</text>
+<path d="M1020,520 L1120,520" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="520" r="3.6" fill="#4a148c"/>
+<text x="1134" y="524" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH1 · IN1</text>
+<text x="1388" y="524" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM1 / NO1</text>
+<path d="M1400,520 L1470,520" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,600 L1120,600" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="600" r="3.6" fill="#4a148c"/>
+<text x="1134" y="604" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH2 · IN2</text>
+<text x="1388" y="604" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM2 / NO2</text>
+<path d="M1400,600 L1470,600" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,680 L1120,680" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="680" r="3.6" fill="#4a148c"/>
+<text x="1134" y="684" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH3 · IN3</text>
+<text x="1388" y="684" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM3 / NO3</text>
+<path d="M1400,680 L1470,680" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,760 L1120,760" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="760" r="3.6" fill="#4a148c"/>
+<text x="1134" y="764" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH4 · IN4</text>
+<text x="1388" y="764" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM4 / NO4</text>
+<path d="M1400,760 L1470,760" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,840 L1120,840" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="840" r="3.6" fill="#4a148c"/>
+<text x="1134" y="844" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH5 · IN5</text>
+<text x="1388" y="844" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM5 / NO5</text>
+<path d="M1400,840 L1470,840" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,920 L1120,920" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="920" r="3.6" fill="#4a148c"/>
+<text x="1134" y="924" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH6 · IN6</text>
+<text x="1388" y="924" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM6 / NO6</text>
+<path d="M1400,920 L1470,920" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,1000 L1120,1000" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="1000" r="3.6" fill="#4a148c"/>
+<text x="1134" y="1004" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH7 · IN7</text>
+<text x="1388" y="1004" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM7 / NO7</text>
+<path d="M1400,1000 L1470,1000" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1020,1080 L1120,1080" fill="none" stroke="#546e7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1120" cy="1080" r="3.6" fill="#4a148c"/>
+<text x="1134" y="1084" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700" fill="#4a148c" text-anchor="start" letter-spacing="0">CH8 · IN8</text>
+<text x="1388" y="1084" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5b6b7c" text-anchor="end" letter-spacing="0">COM8 / NO8</text>
+<path d="M1400,1080 L1470,1080" fill="none" stroke="#8e24aa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1260,460 L1260,200" fill="none" stroke="#d32f2f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1260" cy="200" r="4.5" fill="#d32f2f"/>
+<path d="M1360,1120 L1360,1560" fill="none" stroke="#212121" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1360" cy="1560" r="4.5" fill="#212121"/>
+<text x="1268" y="448" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#d32f2f" text-anchor="start" letter-spacing="0">VCC + JD-VCC</text>
+<text x="1366" y="1150" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#212121" text-anchor="start" letter-spacing="0">GND</text>
+<rect x="1470" y="496" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="518" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Riego Z1</text>
+<text x="1484" y="534" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">electroválvula</text>
+<rect x="1470" y="576" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="598" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Riego Z2</text>
+<text x="1484" y="614" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">electroválvula</text>
+<rect x="1470" y="656" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="678" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Aspersión</text>
+<text x="1484" y="694" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">electroválvula</text>
+<rect x="1470" y="736" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="758" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Cama caliente</text>
+<text x="1484" y="774" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">manta / cable</text>
+<rect x="1470" y="816" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="838" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Iluminación</text>
+<text x="1484" y="854" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">luminaria</text>
+<rect x="1470" y="896" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="918" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Ventilación</text>
+<text x="1484" y="934" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">extractor</text>
+<rect x="1470" y="976" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="998" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Ventana</text>
+<text x="1484" y="1014" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">pulso 5 s</text>
+<rect x="1470" y="1056" width="220" height="48" rx="8" fill="#fff8f0" fill-opacity="1.0" stroke="#e65100" stroke-width="1.4"/>
+<text x="1484" y="1078" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="start" letter-spacing="0">Alarma</text>
+<text x="1484" y="1094" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">baliza / sirena</text>
+<rect x="1330" y="90" width="360" height="200" rx="10" fill="#ffffff" fill-opacity="1.0" stroke="#dfe5ec" stroke-width="1.2"/>
+<text x="1346" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1c2b3a" text-anchor="start" letter-spacing="0">Referencias</text>
+<path d="M1346,140 L1392,140" fill="none" stroke="#d32f2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1402" y="144" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">5 V de la fuente externa</text>
+<path d="M1346,164 L1392,164" fill="none" stroke="#ef6c00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1402" y="168" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">3.3 V del ESP32</text>
+<path d="M1346,188 L1392,188" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1402" y="192" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">GND común</text>
+<path d="M1346,212 L1392,212" fill="none" stroke="#546e7a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1402" y="216" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">señal / GPIO</text>
+<path d="M1346,236 L1392,236" fill="none" stroke="#00897b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1402" y="240" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1c2b3a" text-anchor="start" letter-spacing="0">VCC conmutado (GPIO12)</text>
+<text x="1346" y="272" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Cruce sin punto = sin conexión</text>
+<rect x="1330" y="312" width="360" height="126" rx="10" fill="#fffde7" fill-opacity="1.0" stroke="#f9a825" stroke-width="1.2"/>
+<text x="1346" y="336" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#8d6e00" text-anchor="start" letter-spacing="0">Antes de energizar</text>
+<text x="1346" y="358" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#6d5300" text-anchor="start" letter-spacing="0">·  GPIO12 en bajo (crítico: no arranca)</text>
+<text x="1346" y="378" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#6d5300" text-anchor="start" letter-spacing="0">·  IN del módulo ≤ 3.4 V</text>
+<text x="1346" y="398" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#6d5300" text-anchor="start" letter-spacing="0">·  Los 8 relés OFF al arrancar</text>
+<text x="1346" y="418" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#6d5300" text-anchor="start" letter-spacing="0">·  Probar canal por canal</text>
+<text x="48" y="1578" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6b7c" text-anchor="start" letter-spacing="0">Detalle de resistencias, calibración y verificaciones: docs/04_conexionado_y_componentes.md</text>
+</svg>
