@@ -147,6 +147,67 @@ también `channels[].source` y `channels[].until`: son los que le dicen a la web
 **quién tiene el control** de cada actuador (`auto`, `manual_local`,
 `manual_remote`, `test`, `off`) y cuándo vence un comando remoto.
 
+### 3.2 Mensajes que envía el servidor
+
+Los seis mensajes servidor → dispositivo. El contrato completo (con JSON de
+ejemplo) está en `02 §6`; acá va lo que hay que construir.
+
+| Mensaje | Cuándo | Campos clave |
+|---|---|---|
+| **`welcome`** | respuesta inmediata al `hello` | `session_id`, **`server_time`**, `heartbeat_s`, `telemetry_s`, `config_version`, `send_config`, `limits` |
+| **`config`** | si `send_config: true`, o cuando suba la versión | ver `02 §6.2` (esquema completo) |
+| **`command`** | orden puntual al equipo | ver §5.3 de este documento |
+| **`request`** | diagnóstico bajo demanda | `what`: `"state"` o `"diagnostics"` |
+| **`ping`** | cada 25 s | sin payload; el equipo responde `pong` |
+| **`error`** | rechazo de un frame | `code`, `message`, `ref`, `fatal` |
+
+Detalle de `welcome`:
+
+```json
+{
+  "session_id": "s-8891",
+  "server_time": "2026-11-16T15:04:06Z",
+  "heartbeat_s": 25,
+  "telemetry_s": 30,
+  "config_version": 8,
+  "send_config": true,
+  "limits": { "max_frame_bytes": 16384, "max_commands_per_min": 30 }
+}
+```
+
+- **`server_time` es la hora autoritativa** (`02 §15.7`): el equipo la usa para
+  corregir su RTC. Formato ISO 8601 en UTC.
+- `heartbeat_s` = 25. El equipo corta la sesión si pasan 2 intervalos sin
+  recibir nada.
+- `telemetry_s` = 30 por defecto; **mínimo 10**. Baja el tráfico si conviene;
+  **no** cambia la frecuencia de muestreo local ni la de las alarmas (siguen
+  en 30 s).
+- `send_config: true` + `config_version` distinto → mandar `config` justo
+  después del `welcome`.
+
+Detalle de `request`:
+
+- `what: "state"` → el equipo responde con `state`.
+- `what: "diagnostics"` → responde `state` + un `event` `DIAGNOSTICS` con heap,
+  tareas, uptime, reconexiones y versión.
+- **No sirve para cambiar configuración ni para comandar**: eso es `config` y
+  `command`.
+
+Detalle de `error`:
+
+| `code` | Cuándo |
+|---|---|
+| `invalid_json` | frame no parseable |
+| `unsupported_version` | `v` distinto de 1 |
+| `unknown_type` | `type` desconocido |
+| `invalid_payload` | schema inválido |
+| `unauthorized` | token inválido |
+| `rate_limited` | superó `max_commands_per_min` |
+| `internal` | fallo del servidor |
+
+`fatal: true` significa que **el servidor va a cerrar la sesión**; el equipo
+deberá reconectar con backoff. `ref` apunta al `id` del mensaje rechazado.
+
 ---
 
 ## 4. Modelo de datos sugerido
