@@ -129,15 +129,17 @@ void displayShowNormal(uint32_t cycleCount, uint8_t hour, uint8_t minute, uint8_
 // se formaba la cadena en un buffer de 40 B y se dibujaba entera: el corte
 // ocurria en silencio y el operador no sabia que faltaba texto (clave del AP,
 // SSID largo). Ahora se corta en borde de caracter UTF-8 y se marca con "...".
+// Ojo: los 3 caracteres de "..." se reservan SOLO cuando el texto no cabe;
+// si no, se cortaria de mas una cadena que si entraba (p. ej. "Clave: " +
+// la clave derivada de la MAC = 19 de 21 caracteres).
 #define OLED_LINE_CHARS 21
 
 static void drawLineFitted(uint8_t y, const char* label, const char* value) {
     char buf[96];
     snprintf(buf, sizeof(buf), "%s%s", label, value ? value : "?");
 
-    const size_t maxLen = OLED_LINE_CHARS - 3;  // deja lugar para "..."
-    if (strlen(buf) > maxLen) {
-        size_t cut = maxLen;
+    if (strlen(buf) > OLED_LINE_CHARS) {
+        size_t cut = OLED_LINE_CHARS - 3;  // deja lugar para "..."
         // No cortar a mitad de un caracter UTF-8: retrocede hasta que el byte
         // excluido sea el inicio de un caracter (o ASCII).
         while (cut > 0 && (((uint8_t)buf[cut] & 0xC0) == 0x80)) {

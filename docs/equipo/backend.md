@@ -99,6 +99,54 @@ Los usuarios de la web son un tema del backend (§15.2).
 
 Detalle completo en `02 §2`, `§3`, `§9`.
 
+### 3.1 Manejo de los mensajes que llegan
+
+| Mensaje | Qué hacer | Cuidado |
+|---|---|---|
+| `hello` | identificar el equipo, guardar `fw_version`, versiones y **`capabilities`** | `enabled_channels` es local: mostrar, no modificar |
+| `telemetry` | insertar en la serie temporal | **deduplicar por `seq`**; acepta lotes y `ts` antiguos |
+| `state` | sobrescribir el último estado del dispositivo | es un **snapshot**, no una serie |
+| `event` | insertar en la auditoría | **deduplicar por `event_id`** — los críticos se reenvían tras un reinicio |
+| `ack` | actualizar el comando correspondiente | puede llegar mucho después de `expires_at` |
+| `pong` | medir latencia y detectar sesión muerta | |
+
+#### Captación de datos: el caso del lote
+
+El equipo puede estar horas desconectado. Al reconectar manda **hasta 720
+muestras (≈6 h)** en **lotes de hasta 20**, con `buffered: true`. Por eso:
+
+1. **Insertar sin asumir tiempo real** — aceptar `ts` de horas atrás.
+2. **Deduplicar por `(device_id, seq)`** — un reintento reenvía el mismo lote.
+3. **Marcar `buffered`** para que la web lo distinga de "en vivo".
+4. **No descartar por "llegó tarde"**: ese mecanismo es el respaldo del sistema
+   cuando se corta Internet (`02 §9.2`).
+
+Los eventos siguen la misma lógica: se envían de a uno en orden cronológico, y
+los **críticos** (`ALARM_RAISED`, `CONFIG_REJECTED`, `WATCHDOG_RESET`,
+`NVS_ERROR`) se persisten en NVS del equipo y se reenvían tras reiniciar con su
+`boot_id` **original**. Deduplicar por `event_id`, nunca por `ts`.
+
+#### `capabilities`: qué puede hacer el equipo
+
+`hello.capabilities` (`02 §5.1`) es lo que le dice a la web qué puede pedir:
+
+- `channels` y `enabled_channels` → qué controles ofrecer;
+- `window_actuator: pulse_toggle_5s` → la ventana es **toggle**, no tiene
+  estado continuo;
+- `window_stop: false` → **no existe la acción `stop`** (responde `unsupported`);
+- `window_limits: 1` → solo confirma "cerrada".
+
+Guardalo con el dispositivo y servilo en `GET /api/devices/:id`: la web no debe
+adivinar estas restricciones.
+
+#### Estado: snapshot, no serie
+
+`state` llega al conectar, cada ~5 min y al cambiar algo. Se **sobrescribe** (el
+último gana); para el histórico de estado conviene usar los `eventos`. Guardá
+también `channels[].source` y `channels[].until`: son los que le dicen a la web
+**quién tiene el control** de cada actuador (`auto`, `manual_local`,
+`manual_remote`, `test`, `off`) y cuándo vence un comando remoto.
+
 ---
 
 ## 4. Modelo de datos sugerido

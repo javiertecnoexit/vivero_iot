@@ -30,14 +30,76 @@ controlar el vivero.
 Cada métrica puede venir con `valid: false` (sensor caído). **La UI debe
 mostrar "sin dato" y no `0`.** Ese es el caso de uso más fácil de dejar mal.
 
+**Las muestras no llegan siempre en tiempo real.** El equipo bufferiza hasta
+**720 muestras (~6 h)** y al reconectar las envía en **lotes de hasta 20** con
+`buffered: true`. Por eso la UI debe:
+
+- aceptar `ts` antiguos y fuera de orden (rellenar el histórico, no descartar);
+- marcar como "datos en buffer" lo que llegue con `buffered: true`;
+- deduplicar por `seq`, nunca por `ts`.
+
 ### 1.2 Estado (`state`)
 
-- `mode`: `NORMAL` | `PORTAL` | `MANTENIMIENTO`
-- `config_source`: `backend` | `local` (si el operador forzó el perfil local)
-- `window_state`, alarmas activas y latched, canales habilitados, versión de
-  config, uptime, RSSI.
+Se envía al conectar y después cada ~5 min, y al cambiar algo. Es la fuente de
+verdad para pintar el panel. Esquema completo en `02 §5.3`.
 
-### 1.3 Eventos
+| Ruta | Campos | Para qué en la UI |
+|---|---|---|
+| `mode` | `NORMAL` / `PORTAL` / `MANTENIMIENTO` | banner de modo (ver §7) |
+| `config_source` | `backend` / `local` | avisar si el equipo está en override local |
+| `config_version`, `local_version` | enteros | qué versión está activa |
+| `boot_id`, `uptime_s` | | diagnóstico |
+| `clock` | `utc`, `source`, `valid`, `timezone_offset_min` | reloj; con `valid:false` no confiar en horarios |
+| `wifi` | `connected`, `rssi_dbm`, `ip` | calidad del enlace |
+| `ws` | `connected`, `session_id`, `last_rx_s` | diagnóstico de sesión |
+| `channels` | 8 entradas (abajo) | **estado de los actuadores** |
+| `window` | `state`, `moving`, `direction`, `fault`, `last_move_ts` | estado de la ventana |
+| `alarms` | `active[]`, `latched[]`, `silenced_until` | alarmas |
+
+#### `channels`: el estado de cada actuador
+
+```json
+"cama_caliente": { "enabled": true, "on": true, "source": "auto", "until": null }
+```
+
+| Campo | Significado |
+|---|---|
+| `enabled` | canal habilitado **en el equipo** (desde su portal). Si `false`, deshabilitar el control en la UI |
+| `on` | estado real del relé |
+| `source` | **quién tiene el control** — tabla abajo |
+| `until` | cuándo vence el comando remoto (ISO 8601) o `null` |
+
+**`source` es clave para no confundir al operador:**
+
+| Valor | Quién mandó | Qué mostrar |
+|---|---|---|
+| `off` | nadie | "apagado" |
+| `auto` | la automatización del equipo (horario, umbral, termostato) | "automático" |
+| `manual_local` | alguien en el equipo (botones u OLED) | **"control local"** — la web no puede encender |
+| `manual_remote` | un comando de esta web | "control remoto", con cuenta regresiva de `until` |
+| `test` | prueba de canal desde el portal del equipo | "en prueba (30 s)" |
+
+Con `source: manual_local` un `on` remoto se responde `local_manual_active`.
+**Mostrarlo como estado, no como error**: la prioridad local es una decisión de
+diseño (`03 §1.1`), no un fallo de la web.
+
+### 1.3 Capacidades (`hello.capabilities`)
+
+El equipo anuncia qué puede hacer en el `hello` de cada conexión. **Consultarlo
+antes de ofrecer controles:**
+
+| Campo | Valor en v0.1 | Consecuencia para la UI |
+|---|---|---|
+| `channels` | los 8 canales fijos | catálogo completo |
+| `enabled_channels` | los habilitados en el equipo | ocultar o deshabilitar el resto |
+| `window_actuator` | `pulse_toggle_5s` | la ventana es **toggle**: `open`/`close`, nunca un estado continuo |
+| `window_limits` | `1` | solo confirma "cerrada"; no asumir que se conoce la posición abierta |
+| `window_stop` | `false` | **no mostrar botón "detener"** — `stop` responde `unsupported` |
+
+`enabled_channels` refleja el estado **local** del equipo: el backend lo guarda
+para mostrarlo, **no lo modifica**.
+
+### 1.4 Eventos
 
 Auditoría completa con `code`, `severity`, `channel`, `message`, `data` y
 `ts`. Lista completa en [`../02_protocolo_ws.md`](../02_protocolo_ws.md) §5.4.
