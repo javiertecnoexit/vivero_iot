@@ -263,7 +263,7 @@ static String buildIndexHtml() {
     html += "<input name='ws_url' maxlength='200' value='" +
             String(settingsGetWsUrl()) + "'>";
     html += "<div style='font-size:.85em;color:#666'>Vacio = derivarla del backend. "
-            "El claim puede sobrescribirla. wss:// no esta soportado en v0.1.</div>";
+            "El claim puede sobrescribirla. Acepta ws:// y wss://.</div>";
 
     html += "<h2>Fuente de configuracion</h2>";
     html += "<select name='cfg_source'>";
@@ -772,7 +772,7 @@ static void handleSave() {
         wsUrlTrimmed.startsWith("ws://") || wsUrlTrimmed.startsWith("wss://")) {
         settingsSetWsUrl(wsUrlTrimmed.c_str());
         if (wsUrlTrimmed.startsWith("wss://")) {
-            Serial.println("[PORTAL] Aviso: wss:// no esta soportado en v0.1");
+            Serial.println("[PORTAL] ws_url wss:// guardada (TLS habilitado)");
         }
     } else {
         Serial.println("[PORTAL] ws_url invalida (debe empezar con ws:// o wss://): se conserva");

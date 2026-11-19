@@ -136,7 +136,8 @@ Reglas:
 
 ## 8. Fuera de alcance v0.1
 
-- WSS/TLS (evaluar antes de exponer fuera de la LAN).
+- Validación de certificado TLS (el cifrado ya está: `https://` + `wss://` con
+  `setInsecure()`).
 - Autenticación de usuarios web (la define el equipo de backend).
 - Sensores de luz, CO2, nivel de tanque o caudal.
 - OTA (actualización por USB).
@@ -172,7 +173,8 @@ Reglas:
 - Pin para el segundo sensor de ventana en v2 (GPIO15 es strapping; evaluar
   expansor I2C).
 - Endpoint de alta/token del backend y soporte de headers en el servidor WS.
-- WSS/TLS antes de exponer el equipo fuera de la LAN/VPN.
+- Validación de certificado TLS antes de exponer el equipo sin supervisión
+  (hoy `setInsecure()`).
 - Cargas reales, contactores y protecciones del gabinete.
 - ¿La alarma debe poder deshabilitarse desde el portal? Hoy se permite con
   advertencia.

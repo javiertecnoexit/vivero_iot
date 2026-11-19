@@ -333,7 +333,7 @@ De `02 §15`. Los que te afectan directamente:
 |---|---|---|
 | 2 | Autenticación `Authorization: Bearer`; fallback query solo en dev | por confirmar |
 | 3 | Alta por `claim_code` + `POST /devices/claim` | **recomendado**, falta ruta exacta |
-| 4 | **WSS/TLS** obligatorio antes de salir de LAN/VPN | por implementar |
+| 4 | **WSS/TLS** | **implementado** en el firmware (`https://` + `wss://` con `setInsecure()`); la validación de certificado queda pendiente |
 | 5 | Frecuencia de telemetría (30 s default, ajustable con `welcome.telemetry_s`) | por definir |
 | 6 | Retención de datos | por definir |
 | 7 | Hora autoritativa: `server_time` del backend; RTC/NTP como respaldo | por definir |

@@ -750,7 +750,7 @@ firewall.
 | 4 | Config local | **Tomada:** perfil local + override explícito | amplía portal M5 y lógica M6 |
 | 5 | DS18B20 | **Tomada:** un pin por sonda (16/32/33) | M2, sin mapeo por dirección |
 | 6 | Contraseña del AP | **Tomada:** configurable, default MAC | M5 |
-| 7 | WSS/TLS | Pendiente | seguridad si sale de la LAN/VPN |
+| 7 | WSS/TLS | **Tomada:** `https://` + `wss://` con `setInsecure()` | falta validación de certificado (pinning) |
 | 8 | ¿Alarma deshabilitable? | Pendiente | permitir con advertencia; evaluar forzar |
 | 9 | Cargas reales y contactores | Pendiente | gabinete y seguridad eléctrica |
 | 10 | Datasheet del controlador de ventana | Pendiente | polaridad y tiempo mínimo entre pulsos |

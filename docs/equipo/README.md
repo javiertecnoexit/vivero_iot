@@ -138,7 +138,7 @@ Están listadas en detalle en [`../02_protocolo_ws.md`](../02_protocolo_ws.md)
 | # | Tema | Quién decide |
 |---|---|---|
 | 1 | Endpoint exacto de alta (`POST /api/v1/devices/claim`) y si el servidor WS soporta **headers** en el upgrade | backend confirma |
-| 2 | **WSS/TLS**: obligatorio antes de exponer el equipo fuera de LAN/VPN | backend |
+| 2 | **Certificado TLS**: el firmware ya conecta por `wss://` con `setInsecure()`; falta decidir validación o pinning | backend |
 | 3 | Frecuencia de telemetría (30 s por defecto, ajustable con `welcome.telemetry_s`) | backend |
 | 4 | Retención de datos en MariaDB | backend |
 | 5 | Autorización de usuarios de la web | backend |

@@ -30,7 +30,7 @@
 | Subprotocolo | ninguno en v0.1 |
 | Codificación | texto UTF-8; prohibido binario |
 | Frame máximo | 16 KiB (dispositivo y servidor) |
-| TLS | **no** en v0.1; solo LAN/VPN. WSS obligatorio antes de exponer a Internet |
+| TLS | **sí**: `https://` en el claim y `wss://` en el WS, ambos con `setInsecure()` (cifra sin validar identidad). Validación de certificado pendiente |
 
 - El dispositivo inicia la conexión. Nunca acepta conexiones entrantes.
 - Si la librería WebSocket no permite headers personalizados, se acepta como
@@ -887,8 +887,11 @@ endpoint o proponer otro.
 - El backend autoriza cada comando según el usuario web; el dispositivo confía en
   el backend, pero aplica sus reglas de seguridad locales (canal habilitado,
   vencimiento, máximos, interlocks).
-- v0.1 usa `ws://` solo en LAN/VPN. Antes de exponer el equipo a Internet se debe
-  migrar a `wss://` con validación de certificado y, si es posible, pinning.
+- **TLS implementado** (handoff del backend): `https://` en `claimDevice()` y
+  `wss://` en `startConnection()`, ambos con `setInsecure()` — cifran el tráfico
+  pero **no validan la identidad del servidor**. Queda pendiente la validación de
+  certificado o pinning antes de considerar el canal endurecido. `ws://` sigue
+  permitido para LAN/desarrollo.
 - El acceso físico por USB/serial permite reflashear el equipo; el gabinete debe
   cerrarse con llave. No hay secure boot en v0.1.
 

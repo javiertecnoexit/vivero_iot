@@ -257,7 +257,9 @@ enum class OperationMode : uint8_t {
 #define WS_TELEMETRY_MIN_S          10
 #define WS_BACKOFF_BASE_MS          2000UL
 #define WS_BACKOFF_MAX_MS           60000UL
-#define WS_CONNECT_TIMEOUT_MS       10000UL
+// Con TLS el handshake suma latencia (Cloudflare, ~2-5 s desde el ESP32):
+// 10 s quedaba al filo y disparaba un reintento injustificado.
+#define WS_CONNECT_TIMEOUT_MS       20000UL
 #define WS_FRAME_MAX_BYTES          16384
 #define WS_RX_IDLE_TIMEOUT_MS       20000UL   // sin RX antes de welcome
 #define WS_TELEMETRY_QUEUE          720       // ~6 h a 30 s (RAM)
@@ -268,8 +270,9 @@ enum class OperationMode : uint8_t {
 #define WS_COMMAND_CACHE_MS         600000UL  // 10 min
 #define WS_RATE_MAX_PER_MIN         30
 #define WS_RATE_CHANNEL_MS          2000UL
+// Claim por HTTPS: el handshake TLS va antes del POST (handoff del backend §3.4).
 #define WS_CLAIM_RETRY_MS           60000UL
-#define WS_CLAIM_TIMEOUT_MS         8000UL
+#define WS_CLAIM_TIMEOUT_MS         15000UL
 #define WS_STATE_REFRESH_MS         300000UL  // 5 min
 #define WS_CLAIM_PATH               "/api/v1/devices/claim"
 

@@ -5,6 +5,7 @@
 #include <HTTPClient.h>
 #include <Preferences.h>
 #include <WiFi.h>
+#include <WiFiClientSecure.h>
 #include <WebSocketsClient.h>
 #include <esp_system.h>
 
@@ -1083,15 +1084,29 @@ String deriveWsUrl() {
         return String(stored);
     }
     String base = backendBase();
-    if (base.length() == 0 || base.startsWith("https://")) {
+    if (base.length() == 0) {
         return "";
     }
-    String hostPort = base.substring(7);  // quitar "http://"
+
+    // https:// deriva wss:// y http:// deriva ws://. Sin puerto explícito para
+    // que rija el por defecto del esquema (443 / 80).
+    String scheme;
+    String hostPort;
+    if (base.startsWith("https://")) {
+        scheme = "wss://";
+        hostPort = base.substring(8);
+    } else if (base.startsWith("http://")) {
+        scheme = "ws://";
+        hostPort = base.substring(7);
+    } else {
+        return "";
+    }
+
     const int slash = hostPort.indexOf('/');
     if (slash >= 0) {
         hostPort = hostPort.substring(0, slash);
     }
-    return "ws://" + hostPort + "/ws/device";
+    return scheme + hostPort + "/ws/device";
 }
 
 void rememberError(const char* message) {
@@ -1109,28 +1124,32 @@ void markBackendSeen() {
 bool parseWsUrl(const String& url, String& host, uint16_t& port, String& path,
                 bool& secure) {
     secure = false;
+    size_t prefix = 0;
     if (url.startsWith("wss://")) {
         secure = true;
-        return false;  // TLS no implementado en v0.1
-    }
-    if (!url.startsWith("ws://")) {
+        prefix = 6;
+    } else if (url.startsWith("ws://")) {
+        secure = false;
+        prefix = 5;
+    } else {
         return false;
     }
-    String rest = url.substring(5);
+    String rest = url.substring(prefix);
     const int slash = rest.indexOf('/');
     String hostPort = (slash >= 0) ? rest.substring(0, slash) : rest;
     path = (slash >= 0) ? rest.substring(slash) : "/";
     if (path.length() == 0) {
         path = "/";
     }
+    const uint16_t defaultPort = secure ? 443 : 80;  // TLS: 443
     const int colon = hostPort.indexOf(':');
     if (colon >= 0) {
         host = hostPort.substring(0, colon);
         const long parsed = hostPort.substring(colon + 1).toInt();
-        port = (parsed > 0 && parsed <= 65535) ? (uint16_t)parsed : 80;
+        port = (parsed > 0 && parsed <= 65535) ? (uint16_t)parsed : defaultPort;
     } else {
         host = hostPort;
-        port = 80;
+        port = defaultPort;
     }
     return host.length() > 0;
 }
@@ -1149,8 +1168,9 @@ bool claimDevice() {
         rememberError("backend_url vacia");
         return false;
     }
-    if (base.startsWith("https://")) {
-        rememberError("https no soportado (usar LAN)");
+    const bool useTls = base.startsWith("https://");
+    if (!useTls && !base.startsWith("http://")) {
+        rememberError("backend_url invalida (http:// o https://)");
         return false;
     }
     const char* claimCode = settingsGetClaimCode();
@@ -1177,7 +1197,16 @@ bool claimDevice() {
     http.setTimeout(WS_CLAIM_TIMEOUT_MS);
     const String url = base + WS_CLAIM_PATH;
     Serial.printf("[WS] Claim POST %s\n", url.c_str());
-    if (!http.begin(url)) {
+
+    // https:// → WiFiClientSecure explícito. setInsecure() cifra el tráfico sin
+    // validar la identidad del servidor: es la decisión v0.x (handoff §5; el
+    // certificado lo termina Cloudflare y puede rotar de emisor).
+    WiFiClientSecure tlsClient;
+    if (useTls) {
+        tlsClient.setInsecure();
+    }
+    const bool begun = useTls ? http.begin(tlsClient, url) : http.begin(url);
+    if (!begun) {
         rememberError("claim: URL invalida");
         return false;
     }
@@ -2459,8 +2488,8 @@ void startConnection() {
     uint16_t port = 80;
     bool secure = false;
     if (!parseWsUrl(wsUrl, host, port, path, secure)) {
-        rememberError(secure ? "wss no soportado (usar LAN)" : "ws_url invalida");
-        scheduleRetry(secure ? "wss no soportado" : "URL WebSocket invalida");
+        rememberError("ws_url invalida (ws:// o wss://)");
+        scheduleRetry("URL WebSocket invalida");
         return;
     }
 
@@ -2472,13 +2501,25 @@ void startConnection() {
     s_ws.disconnect();
     s_closingSession = false;
     s_ws.setReconnectInterval(0);  // el firmware decide cuándo reintentar
-    s_ws.begin(host.c_str(), port, path.c_str(), "");  // sin subprotocolo
+    if (secure) {
+        // Ojo con el orden de argumentos de beginSSL(host, port, url,
+        // fingerprint, protocol): el 4.º es el FINGERPRINT y el 5.º el
+        // subprotocolo.
+        // - fingerprint vacío → la librería llama a setInsecure() sola
+        //   (WebSocketsClient.cpp, rama SSL_AXTLS de ESP32). No existe
+        //   WebSocketsClient::setInsecure().
+        // - subprotocolo vacío → no se manda "arduino" (decisión del proyecto).
+        s_ws.beginSSL(host.c_str(), port, path.c_str(), "", "");
+    } else {
+        s_ws.begin(host.c_str(), port, path.c_str(), "");  // sin subprotocolo
+    }
     s_ws.setExtraHeaders(headers.c_str());
     s_state = LinkState::CONNECTING;
     s_connectDeadlineMs = millis() + WS_CONNECT_TIMEOUT_MS;
     s_lastRxMs = millis();
     rememberError("");
-    Serial.printf("[WS] Conectando a %s:%u%s\n", host.c_str(), port, path.c_str());
+    Serial.printf("[WS] Conectando a %s%s:%u%s\n", secure ? "wss://" : "ws://",
+                  host.c_str(), (unsigned)port, path.c_str());
 }
 
 void flushQueues() {
