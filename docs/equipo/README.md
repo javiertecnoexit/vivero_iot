@@ -7,7 +7,7 @@ firmware.
 | Documento | Para quién | Qué contiene |
 |---|---|---|
 | [`backend.md`](backend.md) | Backend | alcance, HTTP, servidor WS, modelo de datos, catálogos, pruebas |
-| [`frontend.md`](frontend.md) | Frontend | pantallas, datos disponibles, comandos, catálogos a mostrar |
+| [`frontend.md`](frontend.md) | Frontend | **informe completo**: API real, pantallas, datos, control de actuadores, programación de riego, umbrales, alarmas, huecos de API y casos de prueba |
 | [`../02_protocolo_ws.md`](../02_protocolo_ws.md) | **Ambos** | **el contrato: fuente de verdad** |
 
 ---
