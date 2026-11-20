@@ -90,9 +90,18 @@ enum class RelayChannel : uint8_t {
 // ----------------------------------------------------------------------------
 // Lectura de sensores — humedad de sustrato (docs/03_reglas_y_plan.md)
 // ----------------------------------------------------------------------------
-// Estabilización tras encender GPIO12: 20-30 ms (delay() bloqueante
-// intencional y comentado, única excepción a la regla 1).
-#define SOIL_STABILIZE_MS      25UL
+// Estabilización tras encender GPIO12 (delay() bloqueante intencional y
+// comentado, única excepción a la regla 1).
+//
+// 25 ms NO alcanzaba: el AOUT de los módulos todavía estaba subiendo y el ADC
+// muesaba ruido/flotante (se vio 0 → 2225 → 3913 entre ciclos, con Z1 y Z2
+// casi idénticos). El portal "si funcionaba" porque hace polling cada 1.5 s y
+// casi siempre lo agarraba ya estabilizado.
+//
+// 300 ms es un valor de diagnóstico: si los ADC quedan estables entre ciclos,
+// bajar hasta el mínimo que dé valores reproducibles. Coste: el ciclo local
+// bloquea 300 ms cada 30 s (aceptable).
+#define SOIL_STABILIZE_MS      300UL
 // Lecturas ADC a promediar (8-16; usamos 12).
 #define SOIL_ADC_SAMPLES       12
 // Rango común de fábrica para sensores resistivos (más seco = ADC más alto).
