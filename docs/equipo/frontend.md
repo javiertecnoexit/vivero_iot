@@ -389,6 +389,10 @@ Códigos completos en `02 §5.4`. Grupos que la web casi seguro usa:
 
 ## 9. Huecos de API — lo que hay que pedir al backend
 
+> **Cada hueco de esta sección ya está redactado como ticket listo para pegarse
+> como issue** en [`tickets_backend.md`](tickets_backend.md): petición, respuesta
+> JSON de ejemplo, criterios de aceptación y orden de implementación (T0–T8).
+
 Prioridad descendente:
 
 | # | Endpoint necesario | Para qué | Hoy |

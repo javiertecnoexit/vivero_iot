@@ -8,6 +8,7 @@ firmware.
 |---|---|---|
 | [`backend.md`](backend.md) | Backend | alcance, HTTP, servidor WS, modelo de datos, catálogos, pruebas |
 | [`frontend.md`](frontend.md) | Frontend | **informe completo**: API real, pantallas, datos, control de actuadores, programación de riego, umbrales, alarmas, huecos de API y casos de prueba |
+| [`tickets_backend.md`](tickets_backend.md) | Backend | **T0–T8 listos para pegar como issues**: API de config, alarmas, auditoría, comandos, dispositivos, diagnóstico y telemetría — con request/response y criterios de aceptación |
 | [`../02_protocolo_ws.md`](../02_protocolo_ws.md) | **Ambos** | **el contrato: fuente de verdad** |
 
 ---
