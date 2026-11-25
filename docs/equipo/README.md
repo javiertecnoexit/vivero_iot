@@ -8,6 +8,7 @@ firmware.
 |---|---|---|
 | [`frontend_diseno.md`](frontend_diseno.md) | **Frontend — EMPEZAR ACÁ** | **23 casos de uso** con pasos, los dos resueltos paso a paso (incluye *"¿cómo programo un riego diario y cuánto durará?"*), arquitectura de información, detalle por pantalla, reglas de negocio, plan por fases y 12 pruebas operativas |
 | [`frontend_auditoria.md`](frontend_auditoria.md) | Frontend | **auditoría medida** del dashboard actual: simpleza, accesibilidad WCAG (contraste, ARIA, labels, gráficos) y capacidad de análisis — con los 17 hallazgos priorizados R1–R17 |
+| [`frontend_revision_v2.md`](frontend_revision_v2.md) | Ambos | **verificación en vivo del portal v2**: las 9 pantallas, accesibilidad medida, 3 defectos (stats con muestras inválidas, footer duplicado, texto) y **1 hallazgo operativo** en la zona 1 |
 | [`frontend.md`](frontend.md) | Frontend | **referencia técnica**: esquemas de API, catálogos de alarmas/eventos, rangos y casos de prueba de código |
 | [`tickets_backend.md`](tickets_backend.md) | Backend | **T0–T8 listos para pegar como issues**: API de config, alarmas, auditoría, comandos, dispositivos, diagnóstico y telemetría — con request/response y criterios de aceptación |
 | [`backend.md`](backend.md) | Backend | alcance, HTTP, servidor WS, modelo de datos, catálogos, pruebas |

@@ -219,7 +219,7 @@ struct WsEvent {
     char     bootId[9];
     char     channel[20];
     char     reason[24];
-    char     rule[24];
+    char     rule[32];
     bool     critical;
     bool     buffered;
     bool     timeValid;
@@ -345,7 +345,7 @@ struct CriticalEvent {
     char     bootId[9];
     char     channel[20];
     char     reason[24];
-    char     rule[24];
+    char     rule[32];
     bool     timeValid;
     bool     used;
 };
