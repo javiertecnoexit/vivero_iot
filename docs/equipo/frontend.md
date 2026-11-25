@@ -1,10 +1,17 @@
 # Informe de requerimientos — Frontend del Vivero IoT
 
 > **Para:** equipo de frontend.
-> **Fecha:** 2026-11-20. **Firmware:** `0.1.0-m6`. **Backend:** `web1.displaysur.online`.
-> **Estado del dashboard actual:** MVP que sirvió para verificar la comunicación con
-> el hardware. **Este documento es lo que falta para el producto completo.**
-> Todo lo que está verificado en producción está marcado ✅; lo propuesto, ⬜.
+> **Fecha:** 2026-11-20 (API verificada 2026-11-25). **Firmware:** `0.1.0-m6`.
+> **Backend:** `web1.displaysur.online`.
+>
+> ⚠️ **Este es el documento TÉCNICO (esquemas, catálogos, rangos).**
+> Para saber **qué construir y por qué**, empezar por
+> **[`frontend_diseno.md`](frontend_diseno.md)** — 23 casos de uso con pasos,
+> diseño de pantallas y plan por fases. Ese es el documento de trabajo;
+> este es la referencia.
+>
+> **Estado del dashboard actual:** MVP que sirvió para verificar la comunicación
+> con el hardware. Todo verificado en producción está marcado ✅; lo propuesto, ⬜.
 
 ---
 

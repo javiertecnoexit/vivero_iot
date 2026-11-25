@@ -6,9 +6,10 @@ firmware.
 
 | Documento | Para quién | Qué contiene |
 |---|---|---|
-| [`backend.md`](backend.md) | Backend | alcance, HTTP, servidor WS, modelo de datos, catálogos, pruebas |
-| [`frontend.md`](frontend.md) | Frontend | **informe completo**: API real, pantallas, datos, control de actuadores, programación de riego, umbrales, alarmas, huecos de API y casos de prueba |
+| [`frontend_diseno.md`](frontend_diseno.md) | **Frontend — EMPEZAR ACÁ** | **23 casos de uso** con pasos, los dos resueltos paso a paso (incluye *"¿cómo programo un riego diario y cuánto durará?"*), arquitectura de información, detalle por pantalla, reglas de negocio, plan por fases y 12 pruebas operativas |
+| [`frontend.md`](frontend.md) | Frontend | **referencia técnica**: esquemas de API, catálogos de alarmas/eventos, rangos y casos de prueba de código |
 | [`tickets_backend.md`](tickets_backend.md) | Backend | **T0–T8 listos para pegar como issues**: API de config, alarmas, auditoría, comandos, dispositivos, diagnóstico y telemetría — con request/response y criterios de aceptación |
+| [`backend.md`](backend.md) | Backend | alcance, HTTP, servidor WS, modelo de datos, catálogos, pruebas |
 | [`../02_protocolo_ws.md`](../02_protocolo_ws.md) | **Ambos** | **el contrato: fuente de verdad** |
 
 ---
@@ -35,8 +36,8 @@ la web que lo usa.**
 | Portal cautivo del dispositivo | ✅ completo. **No es trabajo del frontend**: es HTML servido por el propio ESP32 |
 | Contrato del protocolo | ✅ [`../02_protocolo_ws.md`](../02_protocolo_ws.md) |
 | Backend falso de prueba | ✅ [`../tools/fake_backend.py`](../tools/fake_backend.py) |
-| **Backend real** (HTTP + WS + MariaDB) | ⬜ **por construir** |
-| **Frontend web** | ⬜ **por construir** |
+| **Backend real** (HTTP + WS + MariaDB) | ✅ **desplegado** en `web1.displaysur.online` — ver [`backend.md`](backend.md) |
+| **Frontend web** | 🟡 **MVP de verificación** en `/dashboard` — el rediseño está en [`frontend_diseno.md`](frontend_diseno.md) |
 
 ---
 
@@ -46,7 +47,11 @@ la web que lo usa.**
    y qué queda explícitamente afuera (10 min).
 2. **[`../02_protocolo_ws.md`](../02_protocolo_ws.md)** — el contrato. Es
    largo; léelo entero una vez. Es la única fuente de verdad de los mensajes.
-3. Tu documento: [`backend.md`](backend.md) o [`frontend.md`](frontend.md).
+3. **Si sos de frontend:** [`frontend_diseno.md`](frontend_diseno.md) primero
+   (los 23 casos de uso y el diseño de pantallas) y después
+   [`frontend.md`](frontend.md) como referencia técnica.
+   **Si sos de backend:** [`backend.md`](backend.md) y
+   [`tickets_backend.md`](tickets_backend.md).
 4. [`../03_reglas_y_plan.md`](../03_reglas_y_plan.md) §14 (pruebas) — para
    saber cómo se valida cada cosa.
 
