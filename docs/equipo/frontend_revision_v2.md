@@ -8,7 +8,8 @@
 >
 > **Veredicto: la implementación es muy buena.** El rediseño cumple el
 > `frontend_diseno.md` de punta a punta y la auditoría R1–R12 está aplicada y
-> **medida**. Hay 3 defectos menores y **1 hallazgo operativo importante**.
+> **medida**. Hay 3 defectos menores. El "hallazgo operativo" que reporté
+> (§3) **quedó descartado**: era el banco de pruebas sin agua.
 
 ---
 
@@ -111,48 +112,51 @@ char rule[24];                                   // ws_client.cpp:222 y 348
 
 ---
 
-## 3. Hallazgo operativo 🔍 (no es un bug de software)
+## 3. Hallazgo operativo — ⚠️ descartado: condiciones de laboratorio
 
-El histórico de alarmas y el panel revelan un problema **físico** en la zona 1:
+Durante la revisión reporté una anomalía en la zona 1. **El equipo aclaró que
+es esperable en banco**, no un defecto:
+
+> *"desestima el porcentaje de humedad de las zonas ya que estamos con pruebas
+> de laboratorio y ocasionalmente la sonda puede salirse del medio en el que
+> está, secarse muy rápido y mostrar una lectura errónea; por otro lado el
+> riego aún no está conectado a la red de agua, por esa razón el riego no
+> influye en la humedad de las zonas."*
+
+**Evidencia observada (queda como registro):**
 
 | Evidencia | Valor |
 |---|---|
-| Humedad Z1 (ahora) | **16.0 %** y bajando (17.11 → 16.95 → 16.48 → 16.17) |
-| Humedad Z2 (ahora) | **66.4 %** — normal |
-| Umbral configurado | 30 % |
+| Humedad Z1 | **16.0 %** y bajando (17.11 → 16.95 → 16.48 → 16.17) |
+| Humedad Z2 | **66.4 %** |
 | Riegos ejecutados | `15:29:51 → 15:30:02` (11 s) y `17:48:10 → 17:49:10` (60 s) |
 | Efecto en la humedad | **ninguno**: siguió bajando después del riego |
-| Histórico | *"Humedad de sustrato baja (60 min)"* repetida, una instancia **20/11 22:20 → 25/11 02:14 (4+ días)** |
+| Histórico | *"Humedad de sustrato baja (60 min)"* repetida, una instancia de 4+ días |
 
-**Interpretación:** el relé de Z1 **sí conmuta** (hay eventos `IRRIGATION_START`
-/`STOP`), pero **la humedad no sube**. Eso descarta el software y apunta a:
+**Por qué encaja con la explicación del equipo:**
 
-1. La sonda de Z1 **no está en el sustrato** (lee aire: 16 % estable y bajando
-   con la temperatura del ambiente), o
-2. El agua **no llega a la zona 1** (válvula cerrada, bomba sin cebar, caño
-   tapado, o el riego va a otro ramal).
+1. La sonda sale del sustrato → mide aire → **seca rápido** → valor bajo y
+   descendente, coherente con la temperatura ambiente.
+2. **El riego no tiene agua**: el relé conmuta pero no moja, así que la
+   humedad no puede recuperarse.
+3. El relé **sí dispara** (`IRRIGATION_START`/`STOP`): la cadena de control
+   funciona — detecta "seco", riega y corta.
 
-**Sugerencia de verificación rápida:** poner la sonda Z1 en un vaso con agua.
-Si el valor sube, el sensor está bien y el problema es **el riego**; si no
-sube, la sonda o su cableado están mal.
+**Conclusión: no hay nada que corregir** ni en el software ni en el hardware.
+El comportamiento observado es el correcto para un banco sin agua.
 
-> Este hallazgo **valida el rediseño**: antes esta situación era invisible.
-> Ahora el dashboard la muestra sin que nadie la buscara.
+**Lección de producto:** un sensor que se sale del medio produce una lectura
+**válida pero falsa** (no cae en 0 ni en 4095), y el sistema no puede
+distinguirla de una sequía real. En producción conviene calibrar con el
+sustrato real y vigilar la **deriva**: si la humedad cae muy rápido sin riego
+de por medio, es más probable una sonda fuera de lugar que una sequía
+instantánea.
 
-### Pregunta abierta para el equipo
-
-Con Z1 al 16 % y umbral 30 %, la alarma `humedad_persistente_baja` debería
-estar **activa** (requiere 60 min seguidos bajo el mínimo) y sin embargo
-`state.alarms.active` viene vacío.
-
-¿El `min_humidity` del equipo es realmente 30? El valor que muestra `/riego`
-es el del **backend**; si el `config` no llegó a aplicarse en el equipo, el
-umbral real podría ser otro (por ejemplo 15 %) y eso explicaría las dos cosas:
-que la alarma no dispare y que el riego por umbral no insista.
-
-**Verificación:** en el portal del equipo (OLED o `/api/sensors`) se ve el
-umbral que tiene aplicado. Si difiere de 30, hay un problema de aplicación de
-config que conviene revisar antes que el riego en sí.
+**Sobre la alarma `humedad_persistente_baja`:** no estaba activa al consultar
+porque exige **120 ciclos consecutivos** (60 min) bajo el mínimo y el contador
+se reinicia con cualquier valor por encima. Si la sonda oscila al salirse y
+volver, el contador nunca llega a 120. El histórico confirma que **la alarma
+funciona**: hay instancias registradas de hasta 7,7 h.
 
 ---
 
@@ -205,9 +209,10 @@ Confirmado, con el alcance acotado a `event.data.rule` (§2 D4).
 | 1 | Job de poda / retención definitiva | decisión de producto |
 | 2 | Roles de usuario (¿quién puede editar config?) | decisión |
 | 3 | TLS pinning | decisión de seguridad |
-| 4 | `rule[24] → rule[32]` en firmware | fix pequeño, pendiente |
+| 4 | `rule[24] → rule[32]` en firmware | ✅ **hecho** (commit `caa0426`), falta flashear |
 | 5 | Stats sin muestras inválidas (D1) | fix pequeño |
-| 6 | Diagnóstico: verificar `min_humidity` aplicado (§3) | **investigar** |
+| 6 | ~~Verificar `min_humidity` aplicado~~ | ✅ **descartado**: la anomalía era el banco de pruebas (§3) |
+| 7 | Calibrar las sondas con el sustrato real (no en aire) | al instalar el riego |
 
 ---
 
